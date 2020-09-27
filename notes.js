@@ -56,10 +56,41 @@ they have a type property
 
 
 //Middle ware
-
+/*
 - Is the suggested way to extend Redux with custom functionality
 - It's an extension point between displatching an action, and the moment t reaches the reducer.
 - Use middleware for logging, crash reporting, performing async tasks 
 
 
+//Async actions in redux
 
+state = {
+    loading:true,
+    data:[],
+    error:''
+}
+
+//Loading - displays a loading spinner
+//data- e.g. a list of users
+//display error to the user
+
+//Actions 
+FETCH_USERS_REQUEST - Fetch list of users
+FETCH_USERS_SUCCESS - Fetched successfully
+FETCH_USERS_FAILURE - Error fetching the data
+
+//Reducers 
+case: FETCH_USERS_REQUEST
+      loading:true
+case: FETCH_USERS_SUCCESS
+      Loading:false
+      users:data(from API)
+case: loading:false
+      error: error (from API)
+
+
+Async action creators
+axios - request to an api endpoint
+
+Redux Thunk - middleware
+For defining action creators
