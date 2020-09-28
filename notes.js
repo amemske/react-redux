@@ -94,3 +94,45 @@ axios - request to an api endpoint
 
 Redux Thunk - middleware
 For defining action creators
+
+
+Async actions with Redux *********
+- Fetches a list of users from an API end point and stores it in the redux store
+
+State ----
+state = {
+    loading:true,
+    data:[],
+    error:''
+}
+
+loading: Display a loading spinner in your component
+data: List of users
+error: Display error to the user
+
+Actions----
+
+FETCH_USERS_REQUEST - Fetch lists of users
+FETCH_USERS_SUCCESS - Fetch successfully
+FETCH_USERS_FAILURE - Error fetching the data
+
+Reducer ----
+case: FETCH_USERS_REQUEST
+     loading: true
+case: FETCH_USERS_SUCCESS
+    loading: false
+    users: data (from API)
+case: FETCH_USERS_FAILURE
+    loading: false
+    error:error (from API)
+
+Steps to follow when displaying users using react redux *******
+1. Add Thunk middleware in store.js - so that an action creator can return a function instead of an action
+2. Create your action creators - userAction.js
+3. These actions are then handled by the reducer, which handles the Redux state
+4.  User Container - When the state is updated, the subscribed component 
+    will receive the updated state
+
+    - to learn more -- Redux,axios middleware
+    -Redux persisst npm package
+
